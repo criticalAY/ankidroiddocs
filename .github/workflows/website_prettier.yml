@@ -1,14 +1,26 @@
-name: Check Code Style
+name: Check Website Code Style
 
 on:
   pull_request:
+    paths:
+      - "ankidroid.org/**"
+      - ".github/workflows/website_prettier.yml"
   push:
     branches:
       - main
+    paths:
+      - "ankidroid.org/**"
+      - ".github/workflows/website_prettier.yml"
+
+permissions:
+  contents: read
 
 jobs:
   prettier:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ankidroid.org
     steps:
       - uses: actions/checkout@v5
 
